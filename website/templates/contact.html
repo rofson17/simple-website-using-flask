@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+
+{% block title %} Contact {% endblock %}
+{% block custom_css %}
+<style>
+    .contact_form input,
+    textarea,
+    button {
+        border-radius: 0px !important;
+    }
+</style>
+{% endblock %}
+
+
+{% block body %}
+<section class="container my-5">
+    <h2 class="text-center text-primary">Contact Us</h2>
+    <div class="col-6 mx-auto">
+        <form action="/contact" method="post" class="contact_form">
+            <div class="mb-3">
+                <label for="name" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name"
+                    value="{{session.get('USER')[0] if session.get('USER') else ''}}" required>
+            </div>
+            <div class=" mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com"
+                    value="{{session.get('USER')[1] if session.get('USER') else ''}}" required>
+            </div>
+            <div class="mb-3">
+                <label for="subject" class="form-label">Subject</label>
+                <input type="text" class="form-control" id="subject" name="subject" required>
+            </div>
+            <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control" id="message" rows="3" name="message" required></textarea>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary w-100">Send</button>
+            </div>
+        </form>
+    </div>
+
+</section>
+
+{% endblock %}

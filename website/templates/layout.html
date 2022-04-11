@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="simple bogging website">
+    <meta name="keywords" content="blogger, blogpost, blogread">
+    <title>Coder- {% block title %} {% endblock %}</title>
+
+    <link rel="shortcut icon" href="{{url_for('static', filename='images/icon.png')}}" type="image/png" />
+
+    <!-- ------------------------------------ Bootstrap CSS -------------------------------------- -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+
+    <!-- ------------------------------------ Fontawesome -------------------------------------- -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css"
+        integrity="sha512-BnbUDfEUfV0Slx6TunuB042k9tuKe3xrD6q4mg5Ed72LTgzDIcLPxg6yI2gcMFRyomt+yJJxE+zJwNmxki6/RA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- ------------------------------------ Global CSS -------------------------------------- -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" />
+
+    <!-- ------------------------------------ Custom CSS -------------------------------------- -->
+    {% block custom_css %} {% endblock %}
+
+
+</head>
+
+<body>
+    <!-- ------------------------------------ Navbar -------------------------------------- -->
+    <header class="container my-3 ">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light nav_shadow">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/"> <img src="{{url_for('static', filename='images/icon.png')}}"
+                        alt="logo" />
+                    Coder</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link {{ 'active' if request.path=='/' else '' }}" aria-current="page"
+                                href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ 'active' if request.path=='/about' else '' }}" href="/about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ 'active' if request.path=='/contact' else '' }}"
+                                href="/contact">Contact</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex justify-content-around py-3 py-lg-0 ">
+                        {% if not session.get("USER") %}
+                        <a href="/singup" class="btn btn-outline-primary  mx-lg-3" style="border-radius: 0px;"
+                            data-bs-toggle="tooltip" data-bs-placement="bottom" title="click here for sing in">Sing
+                            Up</a>
+                        {% else %}
+                        <a href="/about" class="btn btn-outline-primary mx-lg-3" style="border-radius: 0px;"
+                            data-bs-toggle="tooltip" data-bs-placement="bottom" title="click here for sing up">{{
+                            session.get("USER")[0][0:10]}}</a>
+                        <a href="/logout" class="btn btn-outline-danger  mx-lg-3" style="border-radius: 0px;"
+                            data-bs-toggle="tooltip" data-bs-placement="bottom" title="logout your account">Log Out</a>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- ------------------------------------ Show Alert -------------------------------------- -->
+        {% with messages=get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        {% if category=='error' %}
+        <div class="alert alert-dismissible fade show show_alert alert_red my-3" role="alert">
+            {{message}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% else %}
+        <div class="alert  alert-dismissible fade show show_alert alert_green my-3" role="alert">
+            {{message}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+    </header>
+
+    {% block body %}
+
+    {% endblock %}
+    <!-- ------------------------------------ Bootstrap JS -------------------------------------- -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

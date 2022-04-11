@@ -1,0 +1,8 @@
+.env
+/env
+/__pycache__
+/website/__pycache__
+/website/database.db
+/website/static/images/users/*.jpg
+/website/static/images/users/*.jpeg
+

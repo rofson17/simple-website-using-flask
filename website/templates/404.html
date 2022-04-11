@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block custom_css %}
+<link rel="stylesheet" href="{{url_for('static',filename='css/404.css')}}">
+{% endblock %}
+
+{% block title %} 404 Error {% endblock %}
+{% block body %}
+<div class="container">
+    <div class="row d-flex justify-content-center align-items-center text-center" style="height: 80vh;">
+        <div class="col-lg-6 col-sm-12 ">
+            <h2><span class="text-secondary">404 Error</span> | <span class="text-danger">page not found</span></h2>
+            <h4>The page you are searching for is not exist</h4>
+            <a href="/" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                title="back to home page" style="border-radius: 0px;"><i class="fa fa-home"></i> Home</a>
+        </div>
+        <div class="col-lg-6 col-sm-12 d-flex up-down">
+            <img src="{{url_for('static', filename='images/404.png')}}" class="img-fluid" alt="404 error image">
+        </div>
+    </div>
+</div>
+{% endblock %}

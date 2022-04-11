@@ -1,0 +1,19 @@
+.sing_card {
+    width: 70%;
+    background-color: rgb(246, 246, 246);
+    transition: 0.5s linear;
+}
+
+.sing_card input {
+    border-radius: 0px !important;
+}
+
+.sing_card .btn {
+    border-radius: 0px !important;
+}
+
+.sing_card:hover {
+    border: none !important;
+    background-color: #fff;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}

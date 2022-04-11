@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Anek+Odia&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Anek Odia', sans-serif;
+}
+
+.nav_shadow {
+    box-shadow: 2px 4px 7px rgb(121, 121, 121);
+}
+
+.alert_red {
+    background-color: red;
+    color: #fff;
+    border-radius: 0px;
+}
+
+.alert_green {
+    background-color: rgb(15, 234, 30);
+    color: #fff;
+    border-radius: 0px;
+}
+
+.show_alert {
+    opacity: 0;
+    animation: showAlert 3s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes showAlert {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

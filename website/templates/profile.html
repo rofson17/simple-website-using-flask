@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% block title %} {{user.name}} {% endblock %}
+
+{% block body %}
+
+
+<section class="container my-5">
+    <h2 class="text-center text-primary my-4">Profle</h2>
+    <div class="row gy-4">
+        <div class="col-10 col-lg-6 order-2 order-lg-1 mx-auto" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+            <div class="d-flex justify-content-center align-items-center flex-column p-4 " style="height: 100%;">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Username: {{user.name}}</li>
+                    <li class="list-group-item">Email: {{user.email}}</li>
+                    <li class="list-group-item">Joined Date: {{user.date}}</li>
+                    <li class="list-group-item"><a href="/logout" class="btn btn-outline-danger w-100"
+                            style="border-radius: 0px;">Log Out</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-10 col-lg-6 order-1 order-lg-2 mx-auto ">
+            <img src=" {{url_for('static', filename=profilePhoto)}}" class="img-fluid" style="height: 50vh;"
+                alt="Profile image" />
+        </div>
+    </div>
+</section>
+
+{% endblock %}

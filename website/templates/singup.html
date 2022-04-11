@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+
+{% block title %} Home {% endblock %}
+{% block custom_css %}
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+{% endblock %}
+
+{% block body %}
+
+
+<section class="container my-5">
+
+    <div class="row" style="height: 100vh;">
+        <div class="col-10  col-lg-6  mx-auto d-flex justify-content-center align-items-center flex-column">
+            <div class="border p-4 sing_card">
+                <h3 class="text-primary my-4">Sing Up</h3>
+
+                <form action="/singup" method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Full Name</label>
+                        <input type="name" class="form-control" id="name" name="name">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="singUpEmail" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="singUpEmail" name="email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="singUpPassword" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="singUpPassword" name="password">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="singUpConformPassword" class="form-label">Conform Password</label>
+                        <input type="password" class="form-control" id="singConformUpPassword" name="conform_password">
+                    </div>
+                    <div class="mb-3">
+                        <label for="profileImg" class="form-label">Profile Photo</label>
+
+                        <input type="file" class="form-control" id="profileImg" name="profile_img">
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="termsCheckBox" name="termsAgree">
+                        <label class=" form-check-label" for="termsCheckBox">I am agree with the <a href="#">terms</a>
+                            and
+                            <a href="#">conditions</a></label>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class=" form-check-label" for="rememberMe">Already have an account. <a href="/">Sing
+                                In</a></label>
+                    </div>
+                    <button type=" submit" class="btn btn-primary">Sing Up</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-10 col-lg-6  mx-auto d-flex justify-content-center align-items-center flex-column">
+            <img src="{{url_for('static', filename='images/singin.png')}}" class="img-fluid" alt="sing in image">
+        </div>
+    </div>
+
+</section>
+
+
+{% endblock %}
